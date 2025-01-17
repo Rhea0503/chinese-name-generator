@@ -194,7 +194,7 @@ function toggleFavorite(button) {
     }
 }
 
-// 生成名字
+// 简化版生成名字函数
 async function generateName() {
     const englishName = document.getElementById('englishName').value;
     const resultDiv = document.getElementById('result');

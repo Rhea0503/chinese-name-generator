@@ -1,21 +1,14 @@
-from flask import Flask, request, jsonify, render_template, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 import os
 import json
 import requests
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/static', static_folder='static', template_folder='.')
 
 # 静态文件路由
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory('static', path)
-
-# Vercel 需要这个
-app.debug = True
+    return send_from_directory('.', 'index.html')
 
 # API路由
 @app.route('/generate_name', methods=['POST'])
