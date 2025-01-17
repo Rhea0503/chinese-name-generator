@@ -193,3 +193,43 @@ function toggleFavorite(button) {
         button.title = '收藏';
     }
 }
+
+// 生成名字
+async function generateName() {
+    const englishName = document.getElementById('englishName').value;
+    const resultDiv = document.getElementById('result');
+    
+    if (!englishName) {
+        resultDiv.innerHTML = '<p class="error">Please enter your English name</p>';
+        return;
+    }
+
+    try {
+        resultDiv.innerHTML = '<p class="loading">Generating your Chinese name...</p>';
+        
+        const response = await fetch('/generate_name', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ englishName }),
+        });
+
+        const data = await response.json();
+        
+        if (data.error) {
+            resultDiv.innerHTML = `<p class="error">Error: ${data.error}</p>`;
+            return;
+        }
+
+        resultDiv.innerHTML = `
+            <div class="name-result">
+                <h2>${data.chineseName}</h2>
+                <p class="pinyin">${data.pinyin}</p>
+                <p class="meaning">${data.meaning}</p>
+            </div>
+        `;
+    } catch (error) {
+        resultDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+    }
+}
