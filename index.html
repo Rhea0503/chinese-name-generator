@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Name Generator</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Find Your Chinese Name</h1>
+            <p>Discover a meaningful Chinese name that reflects your identity</p>
+        </header>
+
+        <main>
+            <section class="name-input">
+                <form id="nameForm">
+                    <div class="input-group">
+                        <label for="englishName">Enter your English name:</label>
+                        <input type="text" id="englishName" name="englishName" required 
+                               placeholder="e.g. Michael">
+                    </div>
+                    <button type="submit">Generate Names</button>
+                </form>
+            </section>
+
+            <section class="results" id="results">
+                <!-- Results will be dynamically inserted here -->
+            </section>
+        </main>
+
+        <footer>
+            <p>Created with ❤️ to bridge cultural understanding</p>
+        </footer>
+    </div>
+
+    <script src="static/js/main.js"></script>
+</body>
+</html>
